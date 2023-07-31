@@ -10,7 +10,7 @@ import { MAX_FREE_COUNTS } from "@/constants";
 import { useProModal } from "@/hooks/use-pro-modal";
 
 interface FreeCounterProps {
-    isPro?: boolean;
+    isPro: boolean;
     apiLimitCount: number;
 }
 

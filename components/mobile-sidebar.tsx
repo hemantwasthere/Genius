@@ -1,17 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
+import { useEffect, useState } from "react";
 
+import { Sidebar } from "@/components/sidebar";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Sidebar } from "@/components/sidebar";
 
 interface MobileSidebarProps {
     apiLimitCount: number
+    isPro: boolean
 }
 
-export const MobileSidebar: React.FC<MobileSidebarProps> = ({ apiLimitCount }) => {
+export const MobileSidebar: React.FC<MobileSidebarProps> = ({ apiLimitCount = 0, isPro = false }) => {
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => setIsMounted(true), []);
@@ -26,7 +27,7 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({ apiLimitCount }) =
                 </Button>
             </SheetTrigger>
             <SheetContent side="left" className="p-0">
-                <Sidebar apiLimitCount={apiLimitCount} />
+                <Sidebar isPro={isPro} apiLimitCount={apiLimitCount} />
             </SheetContent>
         </Sheet>
     );
