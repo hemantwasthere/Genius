@@ -15,13 +15,13 @@ import { Button } from "@/components/ui/button";
 import { Empty } from "@/components/ui/empty";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-// import { useProModal } from "@/hooks/use-pro-modal";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 import { formSchema } from "./constants";
 
 const VideoPage = () => {
     const router = useRouter();
-    // const proModal = useProModal();
+    const proModal = useProModal();
     const [video, setVideo] = useState<string>();
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -43,7 +43,7 @@ const VideoPage = () => {
             form.reset();
         } catch (error: any) {
             if (error?.response?.status === 403) {
-                // proModal.onOpen();
+                proModal.onOpen();
             } else {
                 toast.error("Something went wrong.");
             }
@@ -74,7 +74,7 @@ const VideoPage = () => {
                                 <FormItem className="col-span-12 lg:col-span-10">
                                     <FormControl className="m-0 p-0">
                                         <Input
-                                            className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                                            className="px-2 border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                                             disabled={isLoading}
                                             placeholder="Clown fish swimming in a coral reef"
                                             {...field}

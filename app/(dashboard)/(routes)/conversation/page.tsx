@@ -20,13 +20,13 @@ import { Input } from "@/components/ui/input";
 import { UserAvatar } from "@/components/user-avatar";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import { useProModal } from "@/hooks/use-pro-modal";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 import { formSchema } from "./constants";
 
 const ConversationPage: NextPage = () => {
     const router = useRouter();
-    // const proModal = useProModal();
+    const proModal = useProModal();
     const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -49,7 +49,7 @@ const ConversationPage: NextPage = () => {
             form.reset();
         } catch (error: any) {
             if (error?.response?.status === 403) {
-                // proModal.onOpen();
+                proModal.onOpen();
             } else {
                 toast.error("Something went wrong.");
             }
