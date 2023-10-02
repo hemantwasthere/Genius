@@ -26,7 +26,7 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({ apiLimitCount = 0,
                     <Menu />
                 </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="p-0">
+            <SheetContent side="left" className="p-0" closeClassName="text-white">
                 <Sidebar isPro={isPro} apiLimitCount={apiLimitCount} />
             </SheetContent>
         </Sheet>
